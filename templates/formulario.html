@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Supervivencia</title>
+</head>
+
+<body>
+    <h2>Introduce los datos del pasajero:</h2>
+    <form method="POST">
+        <label>Pclass:</label>
+        <input type="number" name="Pclass" min="1" max="3" required><br>
+
+        <label>SibSp:</label>
+        <input type="number" name="SibSp" min="0" required><br>
+
+        <label>Parch:</label>
+        <input type="number" name="Parch" min="0" required><br>
+
+        <label>Fare:</label>
+        <input type="number" name="Fare" step="0.01" required><br>
+
+        <label>Sex:</label>
+        <select name="Sex" required>
+            <option value="female">Mujer</option>
+            <option value="male">Hombre</option>
+        </select><br>
+
+        <label>Embarked:</label>
+        <select name="Embarked" required>
+            <option value="C">Cherbourg</option>
+            <option value="Q">Queenstown</option>
+            <option value="S">Southampton</option>
+        </select><br>
+
+        <label>Ticket:</label>
+        <select name="Ticket" required>
+            <option value="A/5 21171">A/5 21171</option>
+            <option value="PC 17599">PC 17599</option>
+            <option value="STON/O2. 3101282">STON/O2. 3101282</option>
+            <option value="113803">113803</option>
+            <option value="373450">373450</option>
+            <option value="330877">330877</option>
+            <option value="17463">17463</option>
+            <option value="349909">349909</option>
+            <option value="347742">347742</option>
+            <option value="237736">237736</option>
+            <option value="PP 9549">PP 9549</option>
+            <option value="113783">113783</option>
+            <option value="A/5. 2151">A/5. 2151</option>
+            <option value="347082">347082</option>
+            <option value="350406">350406</option>
+            <option value="248706">248706</option>
+            <option value="382652">382652</option>
+            <option value="244373">244373</option>
+            <option value="345763">345763</option>
+            <option value="2649">2649</option>
+            <option value="239865">239865</option>
+            <option value="248698">248698</option>
+            <option value="330923">330923</option>
+            <option value="113788">113788</option>
+            <option value="347077">347077</option>
+            <option value="2631">2631</option>
+            <option value="19950">19950</option>
+            <option value="330959">330959</option>
+            <option value="349216">349216</option>
+            <option value="PC 17601">PC 17601</option>
+            <option value="PC 17569">PC 17569</option>
+            <option value="335677">335677</option>
+            <option value="C.A. 24579">C.A. 24579</option>
+            <option value="PC 17604">PC 17604</option>
+            <option value="113789">113789</option>
+            <option value="2677">2677</option>
+            <option value="A./5. 2152">A./5. 2152</option>
+            <option value="345764">345764</option>
+            <option value="2651">2651</option>
+            <option value="7546">7546</option>
+            <option value="11668">11668</option>
+            <option value="349253">349253</option>
+            <option value="SC/Paris 2123">SC/Paris 2123</option>
+            <option value="330958">330958</option>
+            <option value="S.C./A.4. 23567">S.C./A.4. 23567</option>
+            <option value="370371">370371</option>
+            <option value="14311">14311</option>
+            <option value="2662">2662</option>
+            <option value="349237">349237</option>
+            <option value="3101295">3101295</option>
+            <option value="A/4. 39886">A/4. 39886</option>
+            <option value="PC 17572">PC 17572</option>
+            <option value="2926">2926</option>
+            <option value="113509">113509</option>
+            <option value="19947">19947</option>
+            <option value="C.A. 31026">C.A. 31026</option>
+            <option value="2697">2697</option>
+            <option value="C.A. 34651">C.A. 34651</option>
+            <option value="CA 2144">CA 2144</option>
+            <option value="2669">2669</option>
+            <option value="113572">113572</option>
+            <option value="36973">36973</option>
+            <option value="347088">347088</option>
+            <option value="PC 17605">PC 17605</option>
+            <option value="2661">2661</option>
+            <option value="C.A. 29395">C.A. 29395</option>
+            <option value="S.P. 3464">S.P. 3464</option>
+            <option value="3101281">3101281</option>
+            <option value="315151">315151</option>
+            <option value="C.A. 33111">C.A. 33111</option>
+            <option value="S.O.C. 14879">S.O.C. 14879</option>
+            <option value="2680">2680</option>
+            <option value="1601">1601</option>
+            <option value="348123">348123</option>
+            <option value="349208">349208</option>
+            <option value="374746">374746</option>
+            <option value="248738">248738</option>
+            <option value="364516">364516</option>
+            <option value="345767">345767</option>
+            <option value="345779">345779</option>
+            <option value="330932">330932</option>
+            <option value="113059">113059</option>
+            <option value="SO/C 14885">SO/C 14885</option>
+            <option value="3101278">3101278</option>
+            <option value="W./C. 6608">W./C. 6608</option>
+            <option value="SOTON/OQ 392086">SOTON/OQ 392086</option>
+            <option value="343275">343275</option>
+            <option value="343276">343276</option>
+            <option value="347466">347466</option>
+            <option value="W.E.P. 5734">W.E.P. 5734</option>
+            <option value="C.A. 2315">C.A. 2315</option>
+            <option value="364500">364500</option>
+            <option value="374910">374910</option>
+            <option value="PC 17754">PC 17754</option>
+            <option value="PC 17759">PC 17759</option>
+            <option value="231919">231919</option>
+            <option value="244367">244367</option>
+            <option value="349245">349245</option>
+            <option value="349215">349215</option>
+            <option value="35281">35281</option>
+            <option value="7540">7540</option>
+            <option value="3101276">3101276</option>
+            <option value="349207">349207</option>
+            <option value="343120">343120</option>
+            <option value="312991">312991</option>
+            <option value="349249">349249</option>
+            <option value="371110">371110</option>
+            <option value="110465">110465</option>
+            <option value="2665">2665</option>
+            <option value="324669">324669</option>
+            <option value="4136">4136</option>
+            <option value="2627">2627</option>
+            <option value="STON/O 2. 3101294">STON/O 2. 3101294</option>
+            <option value="370369">370369</option>
+            <option value="PC 17558">PC 17558</option>
+            <option value="A4. 54510">A4. 54510</option>
+            <option value="27267">27267</option>
+            <option value="370372">370372</option>
+            <option value="C 17369">C 17369</option>
+            <option value="2668">2668</option>
+            <option value="347061">347061</option>
+            <option value="349241">349241</option>
+            <option value="SOTON/O.Q. 3101307">SOTON/O.Q. 3101307</option>
+            <option value="A/5. 3337">A/5. 3337</option>
+            <option value="228414">228414</option>
+            <option value="C.A. 29178">C.A. 29178</option>
+            <option value="SC/PARIS 2133">SC/PARIS 2133</option>
+            <option value="11752">11752</option>
+            <option value="7534">7534</option>
+            <option value="PC 17593">PC 17593</option>
+            <option value="2678">2678</option>
+            <option value="347081">347081</option>
+            <option value="STON/O2. 3101279">STON/O2. 3101279</option>
+            <option value="365222">365222</option>
+            <option value="231945">231945</option>
+            <option value="C.A. 33112">C.A. 33112</option>
+            <option value="350043">350043</option>
+            <option value="230080">230080</option>
+            <option value="244310">244310</option>
+            <option value="S.O.P. 1166">S.O.P. 1166</option>
+            <option value="113776">113776</option>
+            <option value="A.5. 11206">A.5. 11206</option>
+            <option value="A/5. 851">A/5. 851</option>
+            <option value="Fa 265302">Fa 265302</option>
+            <option value="PC 17597">PC 17597</option>
+            <option value="35851">35851</option>
+            <option value="SOTON/OQ 392090">SOTON/OQ 392090</option>
+            <option value="315037">315037</option>
+            <option value="CA. 2343">CA. 2343</option>
+            <option value="371362">371362</option>
+            <option value="C.A. 33595">C.A. 33595</option>
+            <option value="347068">347068</option>
+            <option value="315093">315093</option>
+            <option value="363291">363291</option>
+            <option value="113505">113505</option>
+            <option value="PC 17318">PC 17318</option>
+            <option value="111240">111240</option>
+            <option value="STON/O 2. 3101280">STON/O 2. 3101280</option>
+            <option value="17764">17764</option>
+            <option value="350404">350404</option>
+            <option value="4133">4133</option>
+            <option value="PC 17595">PC 17595</option>
+            <option value="250653">250653</option>
+            <option value="LINE">LINE</option>
+            <option value="SC/PARIS 2131">SC/PARIS 2131</option>
+            <option value="230136">230136</option>
+            <option value="315153">315153</option>
+            <option value="113767">113767</option>
+            <option value="370365">370365</option>
+            <option value="111428">111428</option>
+            <option value="364849">364849</option>
+            <option value="349247">349247</option>
+            <option value="234604">234604</option>
+            <option value="28424">28424</option>
+        </select><br>
+
+        <label>Cabin:</label>
+        <select name="Cabin" required>
+            <option value="Desconocido">Desconocido</option>
+            <option value="C85">C85</option>
+            <option value="C123">C123</option>
+            <option value="E46">E46</option>
+            <option value="G6">G6</option>
+            <option value="C103">C103</option>
+            <option value="D56">D56</option>
+            <option value="A6">A6</option>
+            <option value="C23 C25 C27">C23 C25 C27</option>
+            <option value="B78">B78</option>
+            <option value="D33">D33</option>
+            <option value="B30">B30</option>
+            <option value="C52">C52</option>
+            <option value="B28">B28</option>
+            <option value="C83">C83</option>
+            <option value="F33">F33</option>
+            <option value="F G73">F G73</option>
+            <option value="E31">E31</option>
+            <option value="A5">A5</option>
+            <option value="D10 D12">D10 D12</option>
+            <option value="D26">D26</option>
+            <option value="C110">C110</option>
+            <option value="B58 B60">B58 B60</option>
+            <option value="E101">E101</option>
+            <option value="F E69">F E69</option>
+            <option value="D47">D47</option>
+            <option value="B86">B86</option>
+            <option value="F2">F2</option>
+            <option value="C2">C2</option>
+            <option value="E33">E33</option>
+            <option value="B19">B19</option>
+            <option value="A7">A7</option>
+            <option value="C49">C49</option>
+            <option value="F4">F4</option>
+            <option value="A32">A32</option>
+            <option value="B4">B4</option>
+            <option value="B80">B80</option>
+            <option value="A31">A31</option>
+            <option value="D36">D36</option>
+            <option value="D15">D15</option>
+            <option value="C93">C93</option>
+            <option value="C78">C78</option>
+            <option value="D35">D35</option>
+            <option value="C87">C87</option>
+            <option value="B77">B77</option>
+            <option value="E67">E67</option>
+            <option value="B94">B94</option>
+            <option value="C125">C125</option>
+            <option value="C99">C99</option>
+            <option value="C118">C118</option>
+            <option value="D7">D7</option>
+            <option value="A19">A19</option>
+            <option value="B49">B49</option>
+            <option value="D">D</option>
+            <option value="C22 C26">C22 C26</option>
+            <option value="C106">C106</option>
+            <option value="C65">C65</option>
+            <option value="E36">E36</option>
+            <option value="C54">C54</option>
+            <option value="B57 B59 B63 B66">B57 B59 B63 B66</option>
+            <option value="C7">C7</option>
+            <option value="E34">E34</option>
+            <option value="C32">C32</option>
+            <option value="B18">B18</option>
+            <option value="C124">C124</option>
+            <option value="C91">C91</option>
+            <option value="E40">E40</option>
+            <option value="T">T</option>
+            <option value="C128">C128</option>
+            <option value="D37">D37</option>
+            <option value="B35">B35</option>
+            <option value="E50">E50</option>
+            <option value="C82">C82</option>
+            <option value="B96 B98">B96 B98</option>
+            <option value="E10">E10</option>
+            <option value="E44">E44</option>
+            <option value="A34">A34</option>
+            <option value="C104">C104</option>
+            <option value="C111">C111</option>
+            <option value="C92">C92</option>
+            <option value="E38">E38</option>
+            <option value="D21">D21</option>
+            <option value="E12">E12</option>
+            <option value="E63">E63</option>
+            <option value="A14">A14</option>
+            <option value="B37">B37</option>
+            <option value="C30">C30</option>
+            <option value="D20">D20</option>
+            <option value="B79">B79</option>
+            <option value="E25">E25</option>
+            <option value="D46">D46</option>
+            <option value="B73">B73</option>
+            <option value="C95">C95</option>
+            <option value="B38">B38</option>
+            <option value="B39">B39</option>
+            <option value="B22">B22</option>
+            <option value="C86">C86</option>
+            <option value="C70">C70</option>
+            <option value="A16">A16</option>
+            <option value="C101">C101</option>
+            <option value="C68">C68</option>
+            <option value="A10">A10</option>
+            <option value="E68">E68</option>
+            <option value="B41">B41</option>
+            <option value="A20">A20</option>
+            <option value="D19">D19</option>
+            <option value="D50">D50</option>
+            <option value="D9">D9</option>
+            <option value="A23">A23</option>
+            <option value="B50">B50</option>
+            <option value="A26">A26</option>
+            <option value="D48">D48</option>
+            <option value="E58">E58</option>
+            <option value="C126">C126</option>
+            <option value="B71">B71</option>
+            <option value="B51 B53 B55">B51 B53 B55</option>
+            <option value="D49">D49</option>
+            <option value="B5">B5</option>
+            <option value="B20">B20</option>
+            <option value="F G63">F G63</option>
+            <option value="C62 C64">C62 C64</option>
+            <option value="E24">E24</option>
+            <option value="C90">C90</option>
+            <option value="C45">C45</option>
+            <option value="E8">E8</option>
+            <option value="B101">B101</option>
+            <option value="D45">D45</option>
+            <option value="C46">C46</option>
+            <option value="D30">D30</option>
+            <option value="E121">E121</option>
+            <option value="D11">D11</option>
+            <option value="E77">E77</option>
+            <option value="F38">F38</option>
+            <option value="B3">B3</option>
+            <option value="D6">D6</option>
+            <option value="B82 B84">B82 B84</option>
+            <option value="D17">D17</option>
+            <option value="A36">A36</option>
+            <option value="B102">B102</option>
+            <option value="B69">B69</option>
+            <option value="E49">E49</option>
+            <option value="C47">C47</option>
+            <option value="D28">D28</option>
+            <option value="E17">E17</option>
+            <option value="A24">A24</option>
+            <option value="C50">C50</option>
+            <option value="B42">B42</option>
+            <option value="C148">C148</option>
+        </select><br>
+
+        <label>Age:</label>
+        <input type="number" name="Age" step="0.01" min="0" required><br><br>
+
+        <input type="submit" value="Predecir">
+    </form>
+
+    {% if prediction is not none %}
+    <h3>Resultado: {{ prediction }}</h3>
+    {% endif %}
+</body>
+
+</html>
